@@ -8,13 +8,15 @@ import inet.physicallayer.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
 
 network HetWLAN
 {
-    @display("bgb=606,325");
+    parameters:
+        @display("");
+        int numSTA;
     submodules:
         AP: StandardAccessPoint {
-            @display("p=310,119");
+            @display("");
         }
-        STA: StandardStation {
-            @display("p=310,200");
+        STA[numSTA]: StandardStation {
+            @display("");
         }
         configurator: IPv4NetworkConfigurator {
             @display("p=100,100");
