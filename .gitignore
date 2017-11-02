@@ -1,0 +1,16 @@
+#Directory
+results/
+out/
+
+#File
+test_dbg
+*.anf
+Makefile
+
+#Hidden File/Directory
+.*
+.*/
+
+#.gitignoreは含める
+!/.gitignore
+
