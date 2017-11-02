@@ -15,16 +15,35 @@
 
 package HetWLAN.nodes;
 
-import inet.node.inet.WirelessHost;
+import inet.applications.ethernet.EtherAppCli;
+import inet.linklayer.ieee80211.Ieee80211Nic;
+import inet.mobility.static.StationaryMobility;
 
-//
-// Models a host with (default) one wireless (802.11) card in infrastructure mode.
-// This module is basically a ~StandardHost with an ~Ieee80211Nic with
-// mgmtType = ~Ieee80211MgmtSTA added.
-// It should be used in conjunction with ~AccessPoint, or any other AP model
-// which contains ~Ieee80211Nic with mgmtType = ~Ieee80211MgmtAP.
-//
-module StandardStation extends WirelessHost
+module StandardStation
 {
-    
+    parameters:
+        @display("i=device/wifilaptop");
+        @networkNode();
+        *.interfaceTableModule = "";
+    gates:
+        input radioIn @directIn;
+
+    submodules:
+        app: EtherAppCli {
+            parameters:
+                registerSAP = false;
+                @display("b=40,24;p=180,60,col");
+        }
+        wlan: Ieee80211Nic {
+            parameters:
+                @display("p=112,134;q=queue");
+                mgmtType = default("Ieee80211MgmtSTASimplified");
+        }
+        mobility: StationaryMobility {
+            parameters:
+                @display("p=50,141");
+        }
+    connections allowunconnected:
+        wlan.radioIn <-- radioIn;
+        app.out --> wlan.upperLayerIn;
 }
