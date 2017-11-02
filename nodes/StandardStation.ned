@@ -15,6 +15,7 @@
 
 package HetWLAN.nodes;
 
+import HetWLAN.app.STAapp;
 import inet.applications.ethernet.EtherAppCli;
 import inet.linklayer.ieee80211.Ieee80211Nic;
 import inet.mobility.static.StationaryMobility;
@@ -29,7 +30,7 @@ module StandardStation
         input radioIn @directIn;
 
     submodules:
-        app: EtherAppCli {
+        app: STAapp {
             parameters:
                 registerSAP = false;
                 @display("b=40,24;p=180,60,col");
