@@ -16,8 +16,9 @@
 package HetWLAN.nodes;
 
 import HetWLAN.app.STAapp;
-import inet.applications.ethernet.EtherAppCli;
-import inet.linklayer.ieee80211.Ieee80211Nic;
+//import inet.applications.ethernet.EtherAppCli;
+import HetWLAN.linklayer.MeasureNic;
+//import inet.linklayer.ieee80211.Ieee80211Nic;
 import inet.mobility.static.StationaryMobility;
 
 module StandardStation
@@ -35,7 +36,7 @@ module StandardStation
                 registerSAP = false;
                 @display("b=40,24;p=180,60,col");
         }
-        wlan: Ieee80211Nic {
+        wlan: MeasureNic {
             parameters:
                 @display("p=112,134;q=queue");
                 mgmtType = default("Ieee80211MgmtSTASimplified");

@@ -34,11 +34,5 @@ import inet.node.wireless.AccessPoint;
 //
 module StandardAccessPoint extends AccessPoint
 {
-//    submodules:
-//        sink: Sink {
-//            parameters:
-//                @display("p=89,121");
-//        }
-//    connections allowunconnected:
-//        wlan[0].upperLayerOut --> sink.in++;
+    
 }
